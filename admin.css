@@ -1,0 +1,40 @@
+:root { --primary: #4f46e5; --danger: #ef4444; --success: #10b981; --border: #e5e7eb; }
+body { background: #f9fafb; display: flex; height: 100vh; font-family: sans-serif; }
+
+/* 佈局 */
+.admin-layout { display: flex; width: 100%; }
+.sidebar { width: 250px; background: #1f2937; color: white; display: flex; flex-direction: column; padding: 1rem; }
+.sidebar a { color: #d1d5db; padding: 12px; display: block; text-decoration: none; margin-bottom: 5px; border-radius: 6px; }
+.sidebar a.active, .sidebar a:hover { background: #374151; color: white; }
+.content { flex: 1; padding: 2rem; overflow-y: auto; }
+
+/* 上傳區 (Drag & Drop) */
+.upload-area {
+    border: 2px dashed var(--border); border-radius: 12px; background: white;
+    padding: 3rem; text-align: center; cursor: pointer; transition: 0.3s;
+}
+.upload-area:hover, .upload-area.dragover { border-color: var(--primary); background: #eef2ff; }
+.upload-area .icon { font-size: 3rem; color: #9ca3af; margin-bottom: 1rem; }
+
+/* 操作欄 */
+.action-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: white; padding: 1rem; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.hidden { display: none; }
+
+/* 表格樣式 */
+.table-container { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+th { background: #f3f4f6; font-weight: 600; color: #374151; }
+
+/* 狀態顏色 */
+.row-error { background-color: #fef2f2; }
+.row-error td { color: var(--danger); }
+.tag { padding: 2px 8px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
+.tag.valid { background: #d1fae5; color: #065f46; }
+.tag.invalid { background: #fee2e2; color: #991b1b; }
+
+.btn-primary { background: var(--primary); color: white; padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; }
+.btn-primary:disabled { background: #9ca3af; cursor: not-allowed; }

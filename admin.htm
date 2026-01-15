@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin 後台管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <nav class="sidebar">
+            <div class="brand">Admin Panel</div>
+            <a href="#" class="active"><i class="fa-solid fa-users"></i> 帳號管理</a>
+            <a href="#"><i class="fa-solid fa-file-signature"></i> 測驗管理</a>
+            <button id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> 登出</button>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h2>批次建立帳號</h2>
+                <button id="download-template" class="btn-outline">下載 Excel 範本</button>
+            </header>
+
+            <div id="drop-zone" class="upload-area">
+                <i class="fa-solid fa-cloud-arrow-up icon"></i>
+                <p>點擊或將 Excel 檔案拖放到此處</p>
+                <input type="file" id="file-input" accept=".xlsx, .xls" hidden>
+            </div>
+
+            <div id="action-bar" class="action-bar hidden">
+                <span id="status-text">已讀取 0 筆資料</span>
+                <div class="actions">
+                    <button id="btn-cancel" class="btn-text">取消</button>
+                    <button id="btn-upload-db" class="btn-primary" disabled>
+                        <i class="fa-solid fa-check"></i> 確認並匯入資料庫
+                    </button>
+                </div>
+            </div>
+						
+						<div id="progress-container" class="hidden" style="margin-top: 15px;">
+								<div style="background: #e5e7eb; border-radius: 99px; height: 10px; overflow: hidden;">
+										<div id="progress-bar" style="width: 0%; height: 100%; background: #4f46e5; transition: width 0.3s;"></div>
+								</div>
+								<p id="progress-text" style="text-align: center; margin-top: 5px; color: #6b7280; font-size: 0.9rem;">準備開始...</p>
+						</div>
+
+						<div id="result-log" class="hidden" style="margin-top: 20px; padding: 15px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;">
+								<h4><i class="fa-solid fa-circle-check"></i> 處理完成</h4>
+								<p id="result-msg"></p>
+								<ul id="error-list" style="color: #dc2626; font-size: 0.9rem;"></ul>
+						</div>
+
+
+            <div class="table-container">
+                <table id="preview-table">
+                    <thead>
+                        <tr>
+                            <th>狀態</th><th>姓名</th><th>角色 (Role)</th><th>班級</th><th>通行碼/Email</th><th>錯誤訊息</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="admin.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>
